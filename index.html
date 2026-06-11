@@ -1,0 +1,437 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags الأساسية للواتساب ووسائل التواصل -->
+    <title>Mohammed Temu | اطلب من Temu بسهولة</title>
+    <meta name="description" content="وسيط طلبات تيمو في سلطنة عُمان. تسوق من تيمو وادفع محلياً بكل أمان وبدون بطاقة بنكية.">
+    <meta name="theme-color" content="#ff6600">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mohammed Temu | وسيط تيمو عُمان 🇴🇲">
+    <meta property="og:description" content="لا تملك بطاقة بنكية؟ نحن نتكفل بكل شيء! اختر منتجاتك من تيمو، أرسل لنا الروابط، وادفع محلياً عبر تحويل الهاتف.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#ff6600',
+                            dark: '#cc5200',
+                            light: '#fff0e6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+        html { scroll-behavior: smooth; }
+        .step-circle {
+            width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-weight: bold;
+            background-color: #ff6600; color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2 md:gap-3">
+                <div class="bg-brand-orange text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-cart-shopping text-lg md:text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold leading-none" style="font-family: sans-serif;">Mohammed Temu</h1>
+                    <span class="text-[10px] md:text-xs text-gray-500 font-semibold">عُمان 🇴🇲</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <!-- أيقونة الإعلانات الخاصة (تنتقل لقسم الإعلانات عند النقر) -->
+                <a href="#special-ads" class="bg-yellow-100 text-yellow-600 px-3 py-2 rounded-full text-sm font-bold hover:bg-yellow-200 transition flex items-center gap-1" title="عروض حصرية">
+                    <i class="fa-solid fa-star"></i> <span class="hidden sm:inline">عروضنا</span>
+                </a>
+                
+                <!-- أيقونة التعليمات -->
+                <button onclick="openInstructions()" class="bg-gray-100 text-gray-700 px-3 py-2 rounded-full text-sm font-bold hover:bg-gray-200 transition" title="كيف تطلب؟">
+                    <i class="fa-solid fa-circle-question text-lg"></i>
+                </button>
+
+                <a href="#order-form" class="bg-black text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-gray-800 transition">
+                    اطلب الآن
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal: نافذة التعليمات المنبثقة -->
+    <div id="instructions-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-3xl w-full max-w-md p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeInstructions()" class="absolute top-4 left-4 bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 w-8 h-8 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="text-2xl font-bold mb-6 text-center text-gray-800"><i class="fa-solid fa-circle-info text-brand-orange ml-2"></i>طريقة الطلب بسيطة!</h3>
+            
+            <div class="space-y-4">
+                <div class="flex items-start gap-4 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <div class="step-circle shrink-0">1</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">تصفح تيمو</h4>
+                        <p class="text-gray-500 text-sm">ادخل تطبيق أو موقع Temu وابحث عن المنتجات التي تعجبك.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <div class="step-circle shrink-0">2</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">انسخ الروابط</h4>
+                        <p class="text-gray-500 text-sm">انسخ رابط كل منتج تريده مع تحديد المقاس أو اللون إن وجد.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <div class="step-circle shrink-0">3</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">أرسل وادفع</h4>
+                        <p class="text-gray-500 text-sm">ضع الروابط في نموذج الطلب، ثم قم بتحويل المبلغ عبر الهاتف.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <div class="step-circle shrink-0">4</div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">استلم طلبك</h4>
+                        <p class="text-gray-500 text-sm">سنقوم بطلب المنتجات، وعند وصولها سننسق معك لاستلامها.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم التعليمات الهامة -->
+            <div class="mt-6 bg-red-50 border border-red-100 rounded-xl p-4">
+                <h4 class="font-bold text-red-700 flex items-center gap-2 mb-2 text-sm">
+                    <i class="fa-solid fa-triangle-exclamation"></i> تعليمات هامة جداً:
+                </h4>
+                <ul class="list-disc list-inside text-xs text-red-600 space-y-1.5 leading-relaxed">
+                    <li>الرجاء التأكد تماماً من السلعة المطلوبة (المقاس، اللون، النوع) قبل الشراء.</li>
+                    <li>لا يمكن إلغاء الطلب أو استرجاع المبلغ بعد إتمام عملية الدفع وتأكيد الشراء من الموقع.</li>
+                    <li>مدة التوصيل تعتمد كلياً على شركة الشحن الخاصة بموقع Temu.</li>
+                </ul>
+            </div>
+            
+            <button onclick="closeInstructions()" class="w-full mt-6 bg-brand-orange text-white py-3 rounded-xl font-bold hover:bg-brand-dark transition">
+                فهمت، أريد الطلب الآن
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-brand-light to-white py-12 md:py-20 text-center px-4 relative overflow-hidden">
+        <div class="absolute top-10 right-10 text-brand-orange opacity-20"><i class="fa-solid fa-box text-6xl rotate-12"></i></div>
+        <div class="absolute bottom-10 left-10 text-brand-orange opacity-20"><i class="fa-solid fa-truck-fast text-6xl -rotate-12"></i></div>
+        
+        <div class="max-w-3xl mx-auto relative z-10">
+            <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-bold mb-4 inline-block border border-green-200">الوسيط الأسرع والأكثر أماناً في عُمان</span>
+            <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+                نسوق لك من <span class="text-brand-orange">Temu</span><br> ونسلمك الطلب ليديك!
+            </h2>
+            <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto">
+                اختر منتجاتك من تيمو، أرسل لنا الروابط عبر الموقع، وادفع محلياً بكل أمان وبدون بطاقة بنكية.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#order-form" class="bg-brand-orange text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-brand-dark transition text-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-clipboard-list"></i> ابدأ الطلب
+                </a>
+                <a href="https://www.temu.com/om" target="_blank" class="bg-white text-brand-orange border-2 border-brand-orange px-8 py-3 rounded-full font-bold hover:bg-orange-50 transition text-lg flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-bag-shopping"></i> تصفح موقع Temu 
+                </a>
+            </div>
+            
+            <button onclick="openInstructions()" class="mt-6 text-gray-500 hover:text-brand-orange font-bold text-sm underline decoration-dashed underline-offset-4 transition">
+                <i class="fa-solid fa-circle-question"></i> كيف تعمل الخدمة؟
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- قسم الإعلانات الخاصة بك (مخفي حالياً) -->
+    <!-- لإظهار الإعلان، قم بإزالة العلامة "<!--" في السطر الذي يليه، والعلامة "-->" في نهاية القسم -->
+    <!-- ========================================== -->
+    
+    <!--
+    <section id="special-ads" class="py-12 bg-yellow-50 border-y-2 border-yellow-400">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-8">
+                <span class="bg-yellow-200 text-yellow-800 px-3 py-1 rounded-full text-xs font-bold mb-2 inline-block">تسليم فوري ومباشر</span>
+                <h3 class="text-2xl md:text-3xl font-black text-gray-800"><i class="fa-solid fa-star text-yellow-500 ml-2"></i>عروضنا الخاصة حصرياً لك</h3>
+                <p class="text-gray-600 text-sm mt-2">هذه المنتجات متوفرة لدينا مباشرة (بدون انتظار شحن).</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-yellow-200 flex flex-col sm:flex-row relative transition transform hover:-translate-y-1 hover:shadow-xl">
+                    <img src="رابط_صورتك_هنا.jpg" alt="صورة الإعلان" class="w-full sm:w-2/5 h-48 sm:h-auto object-cover">
+                    
+                    <div class="p-5 flex flex-col justify-between w-full">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-800 mb-1">اسم المنتج الخاص بك هنا</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed mb-4">وصف مختصر للمنتج ومميزاته.</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-auto border-t border-gray-100 pt-3">
+                            <div class="text-xl font-black text-brand-orange">0.00 <span class="text-sm font-bold">ر.ع</span></div>
+                            <button onclick="orderCustomAd('اسم_المنتج')" class="bg-green-500 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-green-600 transition shadow-md flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> اطلب فوراً
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    -->
+    
+    <!-- ========================================== -->
+    <!-- نهاية قسم الإعلانات الخاصة بك -->
+    <!-- ========================================== -->
+
+    <!-- Payment Methods Info -->
+    <section class="py-8 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h3 class="text-lg font-bold mb-4 text-gray-300">طريقة الدفع المتاحة:</h3>
+            <div class="flex justify-center">
+                <div class="bg-gray-800 px-6 py-3 rounded-2xl flex flex-col md:flex-row items-center gap-3 border border-brand-orange shadow-lg">
+                    <i class="fa-solid fa-money-bill-transfer text-brand-orange text-2xl"></i>
+                    <span class="text-base font-bold">التحويل عبر رقم الهاتف: </span>
+                    <span class="bg-brand-orange text-white px-3 py-1 rounded-lg text-xl tracking-wider font-bold" dir="ltr">96898055596</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Order Form (لطلبات تيمو فقط) -->
+    <section id="order-form" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200">
+                <div class="bg-brand-orange p-6 text-white text-center relative">
+                    <h3 class="text-2xl font-bold mb-2">نموذج طلبات (تيمو)</h3>
+                    <p class="text-sm opacity-90">املأ البيانات والروابط وسيتم تحويلك للواتساب لإكمال العملية</p>
+                </div>
+                
+                <div class="p-6 md:p-8">
+                    <!-- Customer Details -->
+                    <div class="mb-8">
+                        <h4 class="font-bold text-gray-800 border-b pb-2 mb-4"><i class="fa-regular fa-user ml-2 text-brand-orange"></i>بيانات العميل</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">الاسم الكريم</label>
+                                <input type="text" id="customer-name" placeholder="مثال: أحمد البلوشي" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">رقم الهاتف (عُمان)</label>
+                                <input type="tel" id="customer-phone" placeholder="9XXXXXXX" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition" dir="ltr">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">الولاية / المنطقة لاستلام الطلب</label>
+                                <input type="text" id="customer-location" placeholder="مثال: مسقط، السيب" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products List -->
+                    <div class="mb-8">
+                        <div class="flex justify-between items-end border-b pb-2 mb-4">
+                            <h4 class="font-bold text-gray-800"><i class="fa-solid fa-link ml-2 text-brand-orange"></i>روابط منتجات تيمو</h4>
+                            <button type="button" onclick="addProductField()" class="text-sm bg-gray-100 text-gray-700 hover:bg-gray-200 px-3 py-1 rounded-lg font-semibold transition">
+                                <i class="fa-solid fa-plus ml-1"></i> إضافة منتج آخر
+                            </button>
+                        </div>
+                        
+                        <div id="products-container" class="space-y-4">
+                            <!-- Product Item -->
+                            <div class="product-item bg-gray-50 p-4 rounded-xl border border-gray-200 relative">
+                                <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+                                    <div class="md:col-span-7">
+                                        <label class="block text-xs font-semibold text-gray-500 mb-1">رابط المنتج من Temu</label>
+                                        <input type="url" placeholder="انسخ الرابط هنا..." class="product-link w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-1 focus:ring-brand-orange outline-none" dir="ltr">
+                                    </div>
+                                    <div class="md:col-span-3">
+                                        <label class="block text-xs font-semibold text-gray-500 mb-1">الكمية</label>
+                                        <input type="number" min="1" value="1" class="product-qty w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-1 focus:ring-brand-orange outline-none text-center">
+                                    </div>
+                                    <div class="md:col-span-12 mt-2">
+                                        <label class="block text-xs font-semibold text-gray-500 mb-1">ملاحظات (اللون، المقاس)</label>
+                                        <input type="text" placeholder="مثال: اللون أسود، مقاس L" class="product-notes w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-1 focus:ring-brand-orange outline-none">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Container -->
+                    <div id="status-msg" class="hidden mb-4 text-center text-sm font-bold p-3 rounded-lg border"></div>
+
+                    <!-- Submit Button -->
+                    <button id="submit-btn" onclick="generateWhatsAppLink()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg transition flex justify-center items-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> أرسل طلب (تيمو) عبر الواتساب
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-8 text-center text-gray-600 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <h2 class="font-bold text-lg mb-2 text-gray-800" style="font-family: sans-serif;">Mohammed Temu</h2>
+            <p class="text-sm mb-4">خدمة شخصية لتسهيل الشراء من منصة Temu للجمهور في سلطنة عُمان.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // التحكم بالنافذة المنبثقة للتعليمات
+        function openInstructions() {
+            document.getElementById('instructions-modal').classList.remove('hidden');
+        }
+        function closeInstructions() {
+            document.getElementById('instructions-modal').classList.add('hidden');
+        }
+
+        // رقم الواتساب المعتمد
+        const YOUR_WHATSAPP_NUMBER = "96898055596"; 
+
+        // --- وظيفة طلب العروض الخاصة (جاهزة للاستخدام عند تفعيل الإعلانات) ---
+        function orderCustomAd(productName) {
+            let message = `*طلب عرض خاص 🌟*\n\n`;
+            message += `مرحباً، أريد الاستفسار أو طلب العرض التالي:\n`;
+            message += `🛍️ اسم المنتج: *${productName}*\n\n`;
+            message += `الرجاء تزويدي بالتفاصيل.`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            
+            const link = document.createElement('a');
+            link.href = whatsappUrl;
+            link.target = '_top'; 
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // --- وظائف طلبات تيمو ---
+        function addProductField() {
+            const container = document.getElementById('products-container');
+            const productItems = container.getElementsByClassName('product-item');
+            
+            if(productItems.length >= 15) {
+                alert("الحد الأقصى هو 15 رابط في الطلب الواحد.");
+                return;
+            }
+
+            const itemNumber = productItems.length + 1;
+            const newItem = document.createElement('div');
+            newItem.className = 'product-item bg-gray-50 p-4 rounded-xl border border-gray-200 relative mt-4';
+            newItem.innerHTML = `
+                <button type="button" onclick="this.parentElement.remove()" class="absolute -top-3 -right-3 bg-red-100 text-red-600 hover:bg-red-500 hover:text-white w-8 h-8 rounded-full flex items-center justify-center transition border border-red-200 shadow-sm">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+                    <div class="md:col-span-7">
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">رابط المنتج ${itemNumber}</label>
+                        <input type="url" placeholder="انسخ الرابط هنا..." class="product-link w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-1 focus:ring-brand-orange outline-none" dir="ltr">
+                    </div>
+                    <div class="md:col-span-3">
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">الكمية</label>
+                        <input type="number" min="1" value="1" class="product-qty w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-1 focus:ring-brand-orange outline-none text-center">
+                    </div>
+                    <div class="md:col-span-12 mt-2">
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">ملاحظات (اللون، المقاس)</label>
+                        <input type="text" placeholder="مثال: اللون أسود، مقاس L" class="product-notes w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:ring-1 focus:ring-brand-orange outline-none">
+                    </div>
+                </div>
+            `;
+            container.appendChild(newItem);
+        }
+
+        function generateWhatsAppLink() {
+            const statusMsg = document.getElementById('status-msg');
+            statusMsg.classList.add('hidden');
+            
+            const name = document.getElementById('customer-name').value.trim();
+            const phone = document.getElementById('customer-phone').value.trim();
+            const location = document.getElementById('customer-location').value.trim();
+
+            if(!name || !phone || !location) {
+                statusMsg.innerText = "الرجاء تعبئة جميع بيانات العميل (الاسم، الرقم، المنطقة).";
+                statusMsg.className = "mb-4 text-center text-sm font-bold p-3 rounded-lg border bg-red-50 text-red-600 border-red-200 block";
+                return;
+            }
+
+            const productItems = document.getElementsByClassName('product-item');
+            let orderDetails = "";
+            let hasValidProduct = false;
+
+            for(let i=0; i<productItems.length; i++) {
+                const link = productItems[i].querySelector('.product-link').value.trim();
+                const qty = productItems[i].querySelector('.product-qty').value;
+                const notes = productItems[i].querySelector('.product-notes').value.trim();
+
+                if(link) {
+                    hasValidProduct = true;
+                    orderDetails += `\n*📦 المنتج ${i+1}:*\nالرابط: ${link}\nالكمية: ${qty}\n`;
+                    if(notes) orderDetails += `ملاحظات: ${notes}\n`;
+                }
+            }
+
+            if(!hasValidProduct) {
+                statusMsg.innerText = "الرجاء إدخال رابط منتج واحد على الأقل.";
+                statusMsg.className = "mb-4 text-center text-sm font-bold p-3 rounded-lg border bg-red-50 text-red-600 border-red-200 block";
+                return;
+            }
+
+            let message = `*طلب تيمو جديد (Mohammed Temu) 🛒*\n\n`;
+            message += `*👤 بيانات العميل:*\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالمنطقة: ${location}\n-------------------\n`;
+            message += `*🛍️ تفاصيل الطلب:*\n${orderDetails}-------------------\n`;
+            message += `الرجاء حساب التكلفة الإجمالية وإرسال تفاصيل الدفع.`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            
+            statusMsg.innerHTML = `جاري التحويل... <br> إذا لم يفتح الواتساب تلقائياً، <a href="${whatsappUrl}" target="_top" class="text-blue-700 underline font-black text-lg bg-blue-100 px-2 py-1 rounded">اضغط هنا للمتابعة</a>`;
+            statusMsg.className = "mb-4 text-center text-sm font-bold p-4 rounded-lg border bg-green-50 text-green-800 border-green-200 block";
+
+            const link = document.createElement('a');
+            link.href = whatsappUrl;
+            link.target = '_top'; 
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
+
+
+```
